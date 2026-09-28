@@ -25,6 +25,7 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isScheduleOpen, setIsScheduleOpen] = useState(false);
+  const [selectedRoleTitle, setSelectedRoleTitle] = useState<string>("AI Product Engineer / AI Engineer");
   const [isCommandOpen, setIsCommandOpen] = useState(false);
 
   return (
@@ -46,7 +47,10 @@ export default function Home() {
 
       {/* TARGET HIRING: OPEN FOR ROLES */}
       <OpenForRoles
-        onOpenSchedule={() => setIsScheduleOpen(true)}
+        onOpenSchedule={(roleTitle) => {
+          if (roleTitle) setSelectedRoleTitle(roleTitle);
+          setIsScheduleOpen(true);
+        }}
       />
 
       {/* SECTION 2: ABOUT ME */}
@@ -98,6 +102,7 @@ export default function Home() {
       <ScheduleModal
         isOpen={isScheduleOpen}
         onClose={() => setIsScheduleOpen(false)}
+        initialRole={selectedRoleTitle}
       />
 
       <CommandPalette

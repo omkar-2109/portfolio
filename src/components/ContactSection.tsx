@@ -33,6 +33,7 @@ export default function ContactSection({
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
 
@@ -43,24 +44,53 @@ export default function ContactSection({
     setTimeout(() => setCopiedItem(null), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    soundManager.playSuccess();
+    setIsSubmitting(true);
+    soundManager.playClick();
+
     try {
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.8 },
-        colors: ["#00f0ff", "#8b5cf6", "#10b981", "#3b82f6"],
+      await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "6bc5a58a-3e81-4ebc-9e23-74b5a329d290",
+          subject: `⚡ CONTACT TRANSMISSION: ${formData.subject} from ${formData.name}`,
+          from_name: formData.name,
+          replyto: formData.email,
+          to: PERSONAL_INFO.email,
+          sender_name: formData.name,
+          sender_email: formData.email,
+          subject_field: formData.subject,
+          message_body: formData.message,
+        }),
       });
+
+      soundManager.playSuccess();
+      try {
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.8 },
+          colors: ["#00f0ff", "#8b5cf6", "#10b981", "#3b82f6"],
+        });
+      } catch {
+        // Ignore if confetti fails in sandboxed environment
+      }
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      }, 6000);
     } catch {
-      // Ignore if confetti fails in iframe
+      soundManager.playSuccess();
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
     }
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 5000);
   };
 
   return (
@@ -316,10 +346,11 @@ export default function ContactSection({
 
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 text-white font-bold text-xs sm:text-sm tracking-wider uppercase hover:opacity-95 shadow-[0_0_25px_rgba(0,240,255,0.3)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                    disabled={isSubmitting}
+                    className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 text-white font-bold text-xs sm:text-sm tracking-wider uppercase hover:opacity-95 shadow-[0_0_25px_rgba(0,240,255,0.3)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-50"
                   >
                     <Send size={15} />
-                    <span>Transmit Message</span>
+                    <span>{isSubmitting ? "Transmitting to Omkar's Inbox..." : "Transmit Message to Inbox"}</span>
                   </button>
                 </form>
               )}

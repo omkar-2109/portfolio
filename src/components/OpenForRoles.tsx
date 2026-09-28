@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 interface OpenForRolesProps {
-  onOpenSchedule: () => void;
+  onOpenSchedule: (roleTitle?: string) => void;
 }
 
 export default function OpenForRoles({ onOpenSchedule }: OpenForRolesProps) {
@@ -151,7 +151,7 @@ export default function OpenForRoles({ onOpenSchedule }: OpenForRolesProps) {
                   onClick={(e) => {
                     e.stopPropagation();
                     soundManager.playClick();
-                    onOpenSchedule();
+                    onOpenSchedule(role.title);
                   }}
                   className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-violet-500/20 hover:from-cyan-500 hover:to-blue-600 border border-cyan-500/40 hover:border-transparent text-cyan-200 hover:text-white text-xs font-semibold transition-all group-hover:shadow-[0_0_20px_rgba(0,240,255,0.25)]"
                 >
