@@ -171,7 +171,19 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             Architected & Built by Omkar Saroj
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => soundManager.playClick()}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-bold text-xs transition-colors shadow-[0_0_15px_rgba(0,240,255,0.4)]"
+              >
+                <span>Launch Live Platform</span>
+                <ExternalLink size={13} />
+              </a>
+            )}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}

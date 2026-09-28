@@ -62,6 +62,7 @@ export default function CommandPalette({
       category: "Navigation",
       items: [
         { label: "Hero & Executive Overview", href: "#", icon: Layers },
+        { label: "Open For Roles & Skill Fit Matrix", href: "#roles", icon: Cpu },
         { label: "About Me & Core Pillars", href: "#about", icon: Cpu },
         { label: "3D Career Timeline", href: "#timeline", icon: Briefcase },
         { label: "Featured Projects (Paryatan, NG Global, etc.)", href: "#projects", icon: Code },

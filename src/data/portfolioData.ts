@@ -76,6 +76,17 @@ export interface BlogPost {
   tags: string[];
 }
 
+export interface OpenRole {
+  id: string;
+  title: string;
+  badge: string;
+  fitScore: string;
+  description: string;
+  matchedCapabilities: string[];
+  evidence: string[];
+  accentColor: string;
+}
+
 export const PERSONAL_INFO = {
   name: "Omkar Saroj",
   title: "AI Product Builder • Full Stack Developer • AI Automation Specialist • Cybersecurity Enthusiast",
@@ -84,23 +95,130 @@ export const PERSONAL_INFO = {
   location: "Mumbai, India",
   email: "omkarsaroj2109@gmail.com",
   phone: "+91 9833268778",
-  linkedin: "https://linkedin.com/in/omkarsaroj",
-  github: "https://github.com/omkar-2109",
+  linkedin: "https://www.linkedin.com/in/omkarsaroj/",
+  github: "https://github.com/omkar-2109/",
   resumePath: "/assets/Omkar_Saroj_Resume.pdf",
-  profilePhoto: "/assets/omkar-profile.jpg",
+  profilePhoto: "/assets/omkar-portrait-latest.jpg",
+  navLogoPhoto: "/assets/omkar-portrait-latest.jpg",
+  nutanixPhoto: "/assets/omkar-nutanix.jpg",
+  githubContributions2026: "2,645",
+  githubHeatmap: "/assets/github-contributions-2026.png",
   education: {
-    degree: "Bachelor of Engineering, Computer Science (IoT, Cyber Security & Blockchain)",
+    degree: "B.E. in Computer Science and Engineering (IoT, Cyber Security including Blockchain Technology)",
     institution: "University of Mumbai",
     period: "2021 – 2025",
   },
   metrics: [
     { value: "60+", label: "AI Tools Evaluated & Tested", hint: "Empirical benchmarking & workflows" },
     { value: "4+", label: "Production Platforms Shipped", hint: "Paryatan, Benefits Biz, NG Global & Ext." },
+    { value: "2,645", label: "GitHub Contributions in 2026", hint: "Verified active engineering velocity" },
     { value: "3+", label: "AI Training & Evaluation Roles", hint: "Turing, Invisible Tech, Outlier AI" },
     { value: "1000+", label: "Hours Fine-Tuning & LLMs", hint: "Reasoning datasets & quality assurance" },
-    { value: "2025", label: "CS Engineering Graduate", hint: "IoT, Cybersecurity & Blockchain Major" },
   ],
 };
+
+export const OPEN_FOR_ROLES: OpenRole[] = [
+  {
+    id: "ai-engineer",
+    title: "AI Product Engineer / AI Engineer",
+    badge: "Frontier AI & LLM Systems",
+    fitScore: "99% Fit",
+    description:
+      "Architecting generative AI applications, multimodal verification agents, fine-tuning datasets, prompt engineering, and low-latency LLM inference pipelines.",
+    matchedCapabilities: [
+      "Gemini 2.5 Pro & Grounded Search API",
+      "Groq Ultra-Low Latency Inference (<250ms)",
+      "LLM Evaluation & Benchmarking (Invisible & Outlier)",
+      "Agentic Tool Calling & Context Resolution",
+    ],
+    evidence: [
+      "AI News Verification Chrome Extension",
+      "AMD AI Sprint Autonomous Scheduling Agent (IIT Bombay)",
+      "PARYATAN Groq Travel Itinerary Engine",
+    ],
+    accentColor: "from-cyan-500 to-blue-600",
+  },
+  {
+    id: "full-stack",
+    title: "Full Stack Developer (Next.js / React / Node.js)",
+    badge: "Production Web Platforms",
+    fitScore: "98% Fit",
+    description:
+      "Engineering full-lifecycle web platforms with clean TypeScript architecture, reactive user interfaces, scalable REST APIs, and role-based access control.",
+    matchedCapabilities: [
+      "Next.js 15 & React 19 Frontend Engineering",
+      "TypeScript, Node.js & Express REST APIs",
+      "Multi-Tenant RBAC Security Architecture",
+      "PostgreSQL, Supabase & Cloud Firestore",
+    ],
+    evidence: [
+      "PARYATAN (AI Tourism Ecosystem — paryatan.tech)",
+      "Benefits Business Solutions (Recruitment CRM — benefitbusinesssolutions.com)",
+      "NG Global (Enterprise Platform — ngglobalmp.in)",
+    ],
+    accentColor: "from-blue-500 to-violet-600",
+  },
+  {
+    id: "ai-automation",
+    title: "AI Automation & Workflow Specialist",
+    badge: "Workflow Orchestration",
+    fitScore: "97% Fit",
+    description:
+      "Eliminating manual business operations by connecting enterprise databases, CRMs, and webhooks with autonomous agentic pipelines and low-code orchestrators.",
+    matchedCapabilities: [
+      "n8n & Zapier Enterprise Integration",
+      "Automated Candidate Pipeline Triggers (+45% Velocity)",
+      "Python Agentic Scripts & Conflict Negotiation",
+      "Webhook Routing & Event-Driven Middleware",
+    ],
+    evidence: [
+      "Turing Workflow & Operations Analysis",
+      "Benefits Business Solutions Hiring Automation",
+      "AMD AI Sprint Calendar Coordination Agent",
+    ],
+    accentColor: "from-violet-500 to-purple-600",
+  },
+  {
+    id: "cyber-secops",
+    title: "Cybersecurity Analyst / SecOps Engineer",
+    badge: "Threat Defense & SecOps",
+    fitScore: "96% Fit",
+    description:
+      "Hands-on security monitoring, SIEM telemetry ingestion, detection rule authoring, threat hunting, and biometric identity protection.",
+    matchedCapabilities: [
+      "Google Security Operations (Chronicle SIEM/SOAR)",
+      "Microsoft Sentinel & KQL Incident Triage",
+      "OSINT Attack Surface Reconnaissance",
+      "OpenCV Biometric Facial Verification & Anti-Spoofing",
+    ],
+    evidence: [
+      "Google Chronicle Deep Dive & Unified SecOps Certified",
+      "Microsoft Sentinel Labs & Azure Defense",
+      "Facial Biometric Auth Guard Implementation",
+    ],
+    accentColor: "from-emerald-500 to-teal-600",
+  },
+  {
+    id: "solutions-ba",
+    title: "Technical Business Analyst / Solutions Engineer",
+    badge: "Bridge Business & Tech",
+    fitScore: "95% Fit",
+    description:
+      "Bridging the communication gap between business stakeholders and engineering teams by scoping technical specifications, system architectures, and client deliverables.",
+    matchedCapabilities: [
+      "Workflow & Systems Requirement Gathering",
+      "API Specification & Data Model Planning",
+      "Stakeholder Communication & Technical Documentation",
+      "60+ AI Tools Empirical Feasibility Analysis",
+    ],
+    evidence: [
+      "Turing Global Talent Network (Independent Contractor)",
+      "Enterprise Custom CRM Process Architectures",
+      "Technical Writing on Multi-Agent Architectures",
+    ],
+    accentColor: "from-amber-500 to-rose-600",
+  },
+];
 
 export const FEATURED_PROJECTS: Project[] = [
   {
@@ -133,7 +251,8 @@ export const FEATURED_PROJECTS: Project[] = [
       { label: "Query Response", value: "< 250ms (Groq)" },
       { label: "CRM Automation", value: "100% Inquiries Tracked" },
     ],
-    githubUrl: "https://github.com/omkar-2109",
+    liveUrl: "https://paryatan.tech/",
+    githubUrl: "https://github.com/omkar-2109/",
   },
   {
     id: "benefits-business-solutions",
@@ -165,7 +284,8 @@ export const FEATURED_PROJECTS: Project[] = [
       { label: "Security Standard", value: "100% RBAC Governed" },
       { label: "Data Integrity", value: "Zero Data Leakage" },
     ],
-    githubUrl: "https://github.com/omkar-2109",
+    liveUrl: "https://benefitbusinesssolutions.com/",
+    githubUrl: "https://github.com/omkar-2109/",
   },
   {
     id: "ng-global",
@@ -197,7 +317,8 @@ export const FEATURED_PROJECTS: Project[] = [
       { label: "Global Reach", value: "Multi-Region Ready" },
       { label: "Lead Response Time", value: "< 2 Minutes Auto" },
     ],
-    githubUrl: "https://github.com/omkar-2109",
+    liveUrl: "https://ngglobalmp.in/",
+    githubUrl: "https://github.com/omkar-2109/",
   },
   {
     id: "ai-news-verification",

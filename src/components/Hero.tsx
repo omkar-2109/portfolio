@@ -74,12 +74,21 @@ export default function Hero({ onOpenResume, onOpenSchedule }: HeroProps) {
             {/* CTAs */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-10 w-full sm:w-auto">
               <a
+                href="#roles"
+                onClick={() => soundManager.playClick()}
+                className="flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-black font-bold text-sm hover:opacity-95 hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <span className="w-2 h-2 rounded-full bg-black animate-ping" />
+                <span>Open For Roles</span>
+                <ArrowRight size={15} />
+              </a>
+
+              <a
                 href="#projects"
                 onClick={() => soundManager.playClick()}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 text-white font-semibold text-sm hover:opacity-95 hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                className="flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 text-white font-semibold text-sm hover:opacity-95 hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
                 <span>View Featured Projects</span>
-                <ArrowRight size={16} />
               </a>
 
               <button
@@ -88,7 +97,7 @@ export default function Hero({ onOpenResume, onOpenSchedule }: HeroProps) {
                   soundManager.playClick();
                   onOpenResume();
                 }}
-                className="flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-cyan-400 text-zinc-200 hover:text-white font-medium text-sm transition-all backdrop-blur-md"
+                className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-cyan-400 text-zinc-200 hover:text-white font-medium text-sm transition-all backdrop-blur-md"
               >
                 <Download size={16} className="text-cyan-400" />
                 <span>Download Resume</span>
@@ -97,7 +106,7 @@ export default function Hero({ onOpenResume, onOpenSchedule }: HeroProps) {
               <a
                 href="#contact"
                 onClick={() => soundManager.playClick()}
-                className="flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-zinc-300 hover:text-cyan-300 font-medium text-sm transition-all"
+                className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-zinc-300 hover:text-cyan-300 font-medium text-sm transition-all"
               >
                 <span>Contact Me</span>
               </a>
@@ -139,23 +148,23 @@ export default function Hero({ onOpenResume, onOpenSchedule }: HeroProps) {
                 </div>
 
                 {/* Profile Photo Display */}
-                <div className="relative w-full h-[76%] rounded-2xl overflow-hidden my-3 border border-white/10 group-hover:border-cyan-400/50 transition-colors">
+                <div className="relative w-full h-[76%] rounded-2xl overflow-hidden my-3 border border-white/10 group-hover:border-cyan-400/50 transition-colors bg-zinc-950">
                   <Image
                     src={PERSONAL_INFO.profilePhoto}
                     alt="Omkar Saroj"
                     fill
-                    className="object-cover object-top filter brightness-105 contrast-105 group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-[50%_18%] filter brightness-105 contrast-105 group-hover:scale-105 transition-transform duration-500"
                     priority
                   />
                   {/* Subtle Gradient Overlays */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-transparent to-transparent opacity-80" />
-                  <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-transparent to-transparent opacity-50" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-transparent to-transparent opacity-75" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-transparent to-transparent opacity-40" />
                   
                   {/* Floating Micro-Badge */}
-                  <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-xl bg-black/70 border border-white/10 backdrop-blur-md flex items-center justify-between">
+                  <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-xl bg-black/75 border border-white/10 backdrop-blur-md flex items-center justify-between">
                     <div>
                       <p className="text-xs font-bold text-white tracking-wide">Omkar Saroj</p>
-                      <p className="text-[10px] text-cyan-300 font-mono">B.E. Computer Science Graduate</p>
+                      <p className="text-[10px] text-cyan-300 font-mono">B.E. CSE (IoT, Cyber Sec & Blockchain)</p>
                     </div>
                     <div className="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300 text-[10px] font-mono border border-cyan-500/30">
                       Top 1% Builder

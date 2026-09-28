@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { soundManager } from "./SoundEffects";
+import { PERSONAL_INFO } from "@/data/portfolioData";
 import {
   Terminal,
   Volume2,
@@ -15,6 +17,7 @@ import {
   Briefcase,
   Mail,
   Search,
+  UserCheck,
 } from "lucide-react";
 
 interface NavbarProps {
@@ -45,6 +48,7 @@ export default function Navbar({ onOpenCommand, onOpenResume }: NavbarProps) {
   };
 
   const navLinks = [
+    { label: "Roles", href: "#roles" },
     { label: "About", href: "#about" },
     { label: "Timeline", href: "#timeline" },
     { label: "Projects", href: "#projects" },
@@ -71,8 +75,15 @@ export default function Navbar({ onOpenCommand, onOpenResume }: NavbarProps) {
           onClick={() => soundManager.playClick()}
           className="flex items-center gap-2.5 group"
         >
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500/20 to-violet-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-300 font-mono font-bold text-sm tracking-wider group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all">
-            OS
+          {/* Round Photo Avatar with Cyber Glow */}
+          <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-cyan-400 shadow-[0_0_15px_rgba(0,240,255,0.4)] group-hover:shadow-[0_0_22px_rgba(0,240,255,0.7)] group-hover:scale-105 transition-all shrink-0 bg-zinc-900">
+            <Image
+              src={PERSONAL_INFO.navLogoPhoto}
+              alt="Omkar Saroj Logo"
+              fill
+              className="object-cover object-[50%_15%]"
+              priority
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors text-sm sm:text-base flex items-center gap-1.5">
@@ -92,7 +103,7 @@ export default function Navbar({ onOpenCommand, onOpenResume }: NavbarProps) {
               key={link.label}
               href={link.href}
               onClick={() => soundManager.playHover()}
-              className="text-xs font-medium text-zinc-300 hover:text-cyan-300 hover:bg-white/[0.06] px-3 py-1.5 rounded-full transition-all duration-200"
+              className="text-xs font-medium text-zinc-300 hover:text-cyan-300 hover:bg-white/[0.06] px-2.5 py-1.5 rounded-full transition-all duration-200"
             >
               {link.label}
             </a>
@@ -102,10 +113,14 @@ export default function Navbar({ onOpenCommand, onOpenResume }: NavbarProps) {
         {/* Right Action Icons & Buttons */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Status Indicator */}
-          <div className="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+          <a
+            href="#roles"
+            onClick={() => soundManager.playClick()}
+            className="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/40 hover:bg-emerald-950/60 border border-emerald-500/30 hover:border-emerald-400 text-emerald-400 text-xs font-mono transition-colors"
+          >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
-            <span>Open for Impact</span>
-          </div>
+            <span>Open For Roles</span>
+          </a>
 
           {/* Sound Toggle */}
           <button

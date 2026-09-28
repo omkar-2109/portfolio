@@ -144,18 +144,37 @@ export default function FeaturedProjects({ onSelectProject }: FeaturedProjectsPr
                 </div>
               </div>
 
-              {/* Action Button */}
-              <button
-                type="button"
-                onClick={() => {
-                  soundManager.playClick();
-                  onSelectProject(project);
-                }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/[0.05] group-hover:bg-cyan-500/20 border border-white/10 group-hover:border-cyan-400/50 text-white group-hover:text-cyan-200 text-xs font-medium transition-all"
-              >
-                <span>View Architecture & Case Study</span>
-                <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </button>
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2 pt-2">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      soundManager.playClick();
+                    }}
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-black font-bold text-xs transition-colors shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+                  >
+                    <span>Live Platform</span>
+                    <ExternalLink size={13} />
+                  </a>
+                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    soundManager.playClick();
+                    onSelectProject(project);
+                  }}
+                  className={`${
+                    project.liveUrl ? "flex-1" : "w-full"
+                  } flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white/[0.05] group-hover:bg-cyan-500/20 border border-white/10 group-hover:border-cyan-400/50 text-white group-hover:text-cyan-200 text-xs font-medium transition-all`}
+                >
+                  <span>{project.liveUrl ? "Case Study" : "View Architecture & Case Study"}</span>
+                  <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </button>
+              </div>
             </div>
           ))}
         </div>

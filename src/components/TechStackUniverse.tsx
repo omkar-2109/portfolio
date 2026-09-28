@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { TECH_STACK } from "@/data/portfolioData";
+import Image from "next/image";
+import { TECH_STACK, PERSONAL_INFO } from "@/data/portfolioData";
 import { soundManager } from "./SoundEffects";
+import { GithubIcon } from "./SocialIcons";
 import {
   Code,
   Globe,
@@ -118,6 +120,49 @@ export default function TechStackUniverse() {
               </div>
             );
           })}
+        </div>
+
+        {/* GitHub Engineering Velocity Telemetry Card */}
+        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-white/[0.04] to-black border border-emerald-500/30 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mb-6">
+            <div className="space-y-1.5 text-center lg:text-left">
+              <div className="flex items-center justify-center lg:justify-start gap-2 text-xs font-mono text-emerald-400">
+                <GithubIcon size={16} />
+                <span>GITHUB ENGINEERING VELOCITY • ACTIVE PRODUCTION COMMITS</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+                <span className="font-mono text-emerald-400 font-bold">{PERSONAL_INFO.githubContributions2026}+</span> Contributions in 2026
+              </h3>
+              <p className="text-zinc-400 text-xs sm:text-sm max-w-xl">
+                Continuous production commits, architectural refinements, and open-source contributions across AI agents, full-stack systems, and security tooling.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 shrink-0">
+              <a
+                href={PERSONAL_INFO.github}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => soundManager.playClick()}
+                className="flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]"
+              >
+                <GithubIcon size={15} />
+                <span>Visit GitHub Profile ↗</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Heatmap Graphic Display */}
+          <div className="pt-4 border-t border-white/10 rounded-2xl overflow-hidden bg-black/60 p-2 sm:p-4 border border-white/5">
+            <div className="relative w-full h-32 sm:h-44">
+              <Image
+                src={PERSONAL_INFO.githubHeatmap}
+                alt="Omkar Saroj 2,645 GitHub Contributions in 2026"
+                fill
+                className="object-contain object-center filter contrast-115 brightness-110"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import ParticleBackground from "@/components/ParticleBackground";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import OpenForRoles from "@/components/OpenForRoles";
 import About from "@/components/About";
 import CareerTimeline from "@/components/CareerTimeline";
 import FeaturedProjects from "@/components/FeaturedProjects";
@@ -40,6 +41,11 @@ export default function Home() {
       {/* SECTION 1: HERO DECK */}
       <Hero
         onOpenResume={() => setIsResumeOpen(true)}
+        onOpenSchedule={() => setIsScheduleOpen(true)}
+      />
+
+      {/* TARGET HIRING: OPEN FOR ROLES */}
+      <OpenForRoles
         onOpenSchedule={() => setIsScheduleOpen(true)}
       />
 
